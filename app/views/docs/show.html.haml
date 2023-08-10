@@ -3,5 +3,16 @@
 -# %p Document Title: #{@doc&.title}
 -# %p Document Content: #{@doc&.content}
 
+
+
+%head
+= csrf_meta_tag
+= javascript_include_tag 'application'
+= javascript_include_tag 'someScript', type: "module"
+
 %h1 #{@doc&.title}
 %p #{@doc&.content}
+
+= link_to "All Docs", docs_path
+= link_to "Fix Doc", edit_doc_path(@doc)
+= link_to "Trash it", doc_path(@doc), method: :delete, data: { confirm: "Are you sure?" }
